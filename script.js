@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
         toggleBtnIcon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
     };
 
-    // Close dropdown menu when clicking outside toggle button
+// Close dropdown menu when clicking outside toggle button
     document.body.addEventListener('click', function (event) {
         if (!event.target.closest('.dropdown_menu') && !event.target.closest('.toggle_btn')) {
             dropDownMenu.classList.remove('open');
@@ -26,6 +26,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // Close toggle button when clicking on the dropdown menu
+    dropDownMenu.addEventListener('click', function (event) {
+        if (event.target.tagName === 'A') {
+            dropDownMenu.classList.remove('open');
+            toggleBtnIcon.className = 'fa-solid fa-bars';
+        }
+    });
+    
     // ------------- Slider function --------------//
 
     let slides = document.getElementsByClassName("slides");
